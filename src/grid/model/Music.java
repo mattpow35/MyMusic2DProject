@@ -19,8 +19,8 @@ public class Music
 	public String toString()
 	{
 		String description = "This song is called " + name + " by " + artist + ", it was released in " + releaseDate+ " and is " + duration + " minutes long.";
-		
-		return description;
+		String song = name;
+		return song;
 	}
 
 }
