@@ -1,10 +1,13 @@
-package music.view;
+package grid.view;
 
 import javax.swing.*;
-import music.controller.MusicController;
+import javax.swing.table.DefaultTableModel;
+
+import grid.controller.GridController;
+
 import java.awt.Dimension;
 
-public class MusicPanel extends JPanel 
+public class GridPanel extends JPanel 
 {
 	private JTextField rowField;
 	private JTextField columnField;
@@ -14,13 +17,16 @@ public class MusicPanel extends JPanel
 	private JLabel inputLabel;
 	private JButton submitButton;
 	private SpringLayout baseLayout;
-	private MusicController baseController;
+	private GridController baseController;
 	
-	public MusicPanel(MusicController baseController)
+	private JTable gridTable;
+	private JScrollPane gridPane;
+	
+	public GridPanel(GridController baseController)
 	{
 		super();
 		this.baseController = baseController;
-		baseLayout = new SpringLayout();
+		this.baseLayout = new SpringLayout();
 		this.rowField = new JTextField(2);
 		this.columnField = new JTextField(2);
 		this.inputField = new JTextField(15);
@@ -30,11 +36,21 @@ public class MusicPanel extends JPanel
 		this.submitButton = new JButton("submit");
 		
 		
+		setupTable();
 		setupPanel();
 		setupLayout();
 		setupListeners();	
 	}
 	
+	private void setupTable()
+	{
+		//Load model
+		DefaultTableModel data = new DefaultTableModel(baseController.getGrid(), new String[] {"one", "two", "three", "four", "five"});
+		gridTable = new JTable();
+		gridTable.setModel(data);;
+		gridPane = new JScrollPane();
+		gridPane.setViewportView(gridTable);
+	}
 	
 	private void setupPanel()
 	{
@@ -50,17 +66,12 @@ public class MusicPanel extends JPanel
 		this.add(columnLabel);
 		this.add(inputLabel);
 		this.add(submitButton);
+		this.add(gridPane);
 	}
 	
 	private void setupLayout()
 	{
 		baseLayout.putConstraint(SpringLayout.WEST, rowField, 0, SpringLayout.WEST, columnField);
-		baseLayout.putConstraint(SpringLayout.NORTH, submitButton, 6, SpringLayout.SOUTH, inputLabel);
-		baseLayout.putConstraint(SpringLayout.WEST, submitButton, 0, SpringLayout.WEST, rowLabel);
-		baseLayout.putConstraint(SpringLayout.NORTH, inputLabel, 29, SpringLayout.SOUTH, columnField);
-		baseLayout.putConstraint(SpringLayout.NORTH, inputField, -5, SpringLayout.NORTH, inputLabel);
-		baseLayout.putConstraint(SpringLayout.WEST, inputField, 6, SpringLayout.EAST, inputLabel);
-		baseLayout.putConstraint(SpringLayout.WEST, inputLabel, 0, SpringLayout.WEST, rowLabel);
 		baseLayout.putConstraint(SpringLayout.NORTH, columnLabel, 22, SpringLayout.SOUTH, rowLabel);
 		baseLayout.putConstraint(SpringLayout.NORTH, columnField, -5, SpringLayout.NORTH, columnLabel);
 		baseLayout.putConstraint(SpringLayout.WEST, columnField, 7, SpringLayout.EAST, columnLabel);
@@ -68,6 +79,18 @@ public class MusicPanel extends JPanel
 		baseLayout.putConstraint(SpringLayout.NORTH, rowField, -5, SpringLayout.NORTH, rowLabel);
 		baseLayout.putConstraint(SpringLayout.NORTH, rowLabel, 10, SpringLayout.NORTH, this);
 		baseLayout.putConstraint(SpringLayout.WEST, rowLabel, 30, SpringLayout.WEST, this);
+		baseLayout.putConstraint(SpringLayout.NORTH, inputField, 8, SpringLayout.NORTH, this);
+		baseLayout.putConstraint(SpringLayout.WEST, inputField, 8, SpringLayout.EAST, inputLabel);
+		baseLayout.putConstraint(SpringLayout.EAST, inputLabel, -239, SpringLayout.EAST, this);
+		baseLayout.putConstraint(SpringLayout.NORTH, inputLabel, 12, SpringLayout.NORTH, this);
+		baseLayout.putConstraint(SpringLayout.NORTH, submitButton, 13, SpringLayout.SOUTH, inputLabel);
+		baseLayout.putConstraint(SpringLayout.WEST, submitButton, 40, SpringLayout.EAST, columnField);
+		baseLayout.putConstraint(SpringLayout.NORTH, gridPane, 125, SpringLayout.NORTH, this);
+		baseLayout.putConstraint(SpringLayout.WEST, gridPane, 46, SpringLayout.WEST, this);
+		baseLayout.putConstraint(SpringLayout.SOUTH, gridPane, -5, SpringLayout.SOUTH, this);
+		baseLayout.putConstraint(SpringLayout.EAST, gridPane, -46, SpringLayout.EAST, this);
+		
+		
 		
 		
 		
