@@ -23,4 +23,12 @@ public class Music
 		return song;
 	}
 
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 }

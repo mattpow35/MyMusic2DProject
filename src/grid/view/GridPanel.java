@@ -50,7 +50,7 @@ public class GridPanel extends JPanel
 	private void setupTable()
 	{
 		//Load model
-		DefaultTableModel data = new DefaultTableModel(baseController.getGrid(), new String[] {"one", "two", "three", "four", "five"});
+		DefaultTableModel data = new DefaultTableModel(baseController.getGrid(), new String[] {"Kansas", "Poison", "Boston", "Journey", "Rush"});
 		gridTable = new JTable();
 		gridTable.setModel(data);;
 		gridPane = new JScrollPane();
@@ -106,7 +106,16 @@ public class GridPanel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-			
+				int row = Integer.parseInt(rowField.getText());
+				int col = Integer.parseInt(columnField.getText());
+				if (row < 5 && col < 5)
+				{
+					baseController.getGrid()[row][col].setName(inputField.getText());
+				}
+				else
+				{
+					JOptionPane.showMessageDialog(baseController.getAppFrame(), "Type in a valid location for a song. Rememeer row and column start at 0 not 1 :)");
+				}
 			}
 		});
 	}

@@ -7,6 +7,16 @@ import grid.view.GridFrame;
 public class GridController 
 {
 	private GridFrame appFrame;
+	public GridFrame getAppFrame() {
+		return appFrame;
+	}
+
+
+	public void setAppFrame(GridFrame appFrame) {
+		this.appFrame = appFrame;
+	}
+
+
 	private Music [][] grid;
 	
 	public GridController()
@@ -18,6 +28,7 @@ public class GridController
 		
 		
 	}
+	
 	
 	private void fillGrid()
 	{
@@ -83,6 +94,12 @@ public class GridController
 	{
 		return grid;
 	}
+	
+	public void setGrid(Music[][] grid) 
+	{
+		this.grid = grid;
+	}
+
 	
 	public GridFrame getFrame()
 	{
