@@ -7,7 +7,7 @@ public class Music
 	private int releaseDate;
 	private double duration;
 	
-	public Music(String name, String artist, int releaseDate, double duration)
+	public Music(String name, String artist)
 	{
 		this.name = name;
 		this.artist = artist;
@@ -18,7 +18,7 @@ public class Music
 	
 	public String toString()
 	{
-		String description = "This song is called " + name + " by " + artist + ", it was released in " + releaseDate+ " and is " + duration + " minutes long.";
+		String description = "This song is called " + name + " by " + artist;
 		String song = name;
 		return song;
 	}

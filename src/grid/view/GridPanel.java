@@ -6,6 +6,7 @@ import javax.swing.table.DefaultTableModel;
 import grid.controller.GridController;
 
 import java.awt.Dimension;
+import java.awt.event.*;
 
 public class GridPanel extends JPanel 
 {
@@ -41,6 +42,10 @@ public class GridPanel extends JPanel
 		setupLayout();
 		setupListeners();	
 	}
+	public GridController getBaseController()
+	{
+		return baseController;
+	}
 	
 	private void setupTable()
 	{
@@ -55,7 +60,7 @@ public class GridPanel extends JPanel
 	private void setupPanel()
 	{
 		this.setLayout(baseLayout);
-		this.setPreferredSize(new Dimension(500, 500));
+		this.setPreferredSize(new Dimension(750, 750));
 		rowField.setEditable(true);
 		columnField.setEditable(true);
 		inputField.setEditable(true);
@@ -85,11 +90,10 @@ public class GridPanel extends JPanel
 		baseLayout.putConstraint(SpringLayout.NORTH, inputLabel, 12, SpringLayout.NORTH, this);
 		baseLayout.putConstraint(SpringLayout.NORTH, submitButton, 13, SpringLayout.SOUTH, inputLabel);
 		baseLayout.putConstraint(SpringLayout.WEST, submitButton, 40, SpringLayout.EAST, columnField);
-		baseLayout.putConstraint(SpringLayout.NORTH, gridPane, 125, SpringLayout.NORTH, this);
-		baseLayout.putConstraint(SpringLayout.WEST, gridPane, 46, SpringLayout.WEST, this);
-		baseLayout.putConstraint(SpringLayout.SOUTH, gridPane, -5, SpringLayout.SOUTH, this);
-		baseLayout.putConstraint(SpringLayout.EAST, gridPane, -46, SpringLayout.EAST, this);
-		
+		baseLayout.putConstraint(SpringLayout.NORTH, gridPane, 120, SpringLayout.NORTH, this);
+		baseLayout.putConstraint(SpringLayout.WEST, gridPane, -30, SpringLayout.WEST, rowLabel);
+		baseLayout.putConstraint(SpringLayout.SOUTH, gridPane, -10, SpringLayout.SOUTH, this);
+		baseLayout.putConstraint(SpringLayout.EAST, gridPane, 0, SpringLayout.EAST, this);
 		
 		
 		
@@ -98,7 +102,13 @@ public class GridPanel extends JPanel
 	
 	private void setupListeners()
 	{
-		
+		submitButton.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+			
+			}
+		});
 	}
 
 }
