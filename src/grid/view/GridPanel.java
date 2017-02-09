@@ -33,7 +33,7 @@ public class GridPanel extends JPanel
 		this.inputField = new JTextField(15);
 		this.rowLabel = new JLabel("Row:");
 		this.columnLabel = new JLabel("Column:");
-		this.inputLabel = new JLabel("Type input here:");
+		this.inputLabel = new JLabel("Type in a new song here:");
 		this.submitButton = new JButton("submit");
 		
 		
