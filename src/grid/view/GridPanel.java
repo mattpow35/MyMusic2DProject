@@ -2,9 +2,7 @@ package grid.view;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-
 import grid.controller.GridController;
-
 import java.awt.Dimension;
 import java.awt.event.*;
 
@@ -73,8 +71,8 @@ public class GridPanel extends JPanel
 		this.add(columnLabel);
 		this.add(inputLabel);
 		this.add(submitButton);
-		this.add(gridPane);
 		this.add(eraseButton);
+		this.add(gridPane);
 	}
 	
 	private void setupLayout()
@@ -102,7 +100,6 @@ public class GridPanel extends JPanel
 		
 		
 		
-		
 	}
 	
 	private void setupListeners()
@@ -116,6 +113,7 @@ public class GridPanel extends JPanel
 				if (row < 5 && col < 5)
 				{
 					baseController.getGrid()[row][col].setName(inputField.getText());
+					
 				}
 				else
 				{

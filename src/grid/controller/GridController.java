@@ -86,7 +86,9 @@ public class GridController
 	
 	public void start()
 	{
-		JOptionPane.showMessageDialog(appFrame, "This is my 2D creation of music.");
+		JOptionPane.showMessageDialog(appFrame, "Type a valid integer between 0 and 4 into the row and field column\n"
+				+ "Press clear to erase the text in that spot or type into the text field\n"
+				+ "and press change song to change the text in that position.");
 	}
 
 	
