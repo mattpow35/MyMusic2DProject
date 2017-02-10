@@ -19,9 +19,11 @@ public class GridPanel extends JPanel
 	private JButton submitButton;
 	private SpringLayout baseLayout;
 	private GridController baseController;
+	private JButton eraseButton;
 	
 	private JTable gridTable;
 	private JScrollPane gridPane;
+
 	
 	public GridPanel(GridController baseController)
 	{
@@ -34,8 +36,8 @@ public class GridPanel extends JPanel
 		this.rowLabel = new JLabel("Row:");
 		this.columnLabel = new JLabel("Column:");
 		this.inputLabel = new JLabel("Type in a new song here:");
-		this.submitButton = new JButton("submit");
-		
+		this.submitButton = new JButton("Change Song");
+		this.eraseButton = new JButton("Clear");
 		
 		setupTable();
 		setupPanel();
@@ -72,6 +74,7 @@ public class GridPanel extends JPanel
 		this.add(inputLabel);
 		this.add(submitButton);
 		this.add(gridPane);
+		this.add(eraseButton);
 	}
 	
 	private void setupLayout()
@@ -94,6 +97,8 @@ public class GridPanel extends JPanel
 		baseLayout.putConstraint(SpringLayout.WEST, gridPane, -30, SpringLayout.WEST, rowLabel);
 		baseLayout.putConstraint(SpringLayout.SOUTH, gridPane, -10, SpringLayout.SOUTH, this);
 		baseLayout.putConstraint(SpringLayout.EAST, gridPane, 0, SpringLayout.EAST, this);
+		baseLayout.putConstraint(SpringLayout.NORTH, eraseButton, 6, SpringLayout.SOUTH, submitButton);
+		baseLayout.putConstraint(SpringLayout.WEST, eraseButton, 0, SpringLayout.WEST, submitButton);
 		
 		
 		
@@ -116,6 +121,26 @@ public class GridPanel extends JPanel
 				{
 					JOptionPane.showMessageDialog(baseController.getAppFrame(), "Type in a valid location for a song. Rememeer row and column start at 0 not 1 :)");
 				}
+			}
+		});
+		
+		
+		eraseButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+					int row = Integer.parseInt(rowField.getText());
+					int col = Integer.parseInt(columnField.getText());
+					if (row < 5 && col < 5)
+					{
+						baseController.getGrid()[row][col].setName("");
+					}
+					else
+					{
+						JOptionPane.showMessageDialog(baseController.getAppFrame(), "Type in a valid location for a song to be cleared. Rows and columns start at 0 not 1 :)");
+					}
+		     	
+		
 			}
 		});
 	}
