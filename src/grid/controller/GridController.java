@@ -112,7 +112,15 @@ public class GridController
 	{
 		if (isValid(row) && isValid(col))
 		{
-			grid[Integer.parseInt(row)][Integer.parseInt(col)].setName(input);
+			if(Integer.parseInt(row) < 5 && Integer.parseInt(col) < 5)
+			{
+			   grid[Integer.parseInt(row)][Integer.parseInt(col)].setName(input);
+			}
+			else
+			{
+				JOptionPane.showMessageDialog(appFrame, "You need to put in a number that is actually inside the table. \n"
+						+ "Remember it starts at 0 not 1.");
+			}
 		}
 	}
 	
@@ -125,7 +133,7 @@ public class GridController
 		}
 		catch(NumberFormatException error)
 		{
-			
+			JOptionPane.showMessageDialog(appFrame, "You must use ints");
 			return false;
 		}
 	}
