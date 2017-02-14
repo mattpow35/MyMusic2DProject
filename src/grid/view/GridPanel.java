@@ -55,6 +55,8 @@ public class GridPanel extends JPanel
 		gridTable.setModel(data);;
 		gridPane = new JScrollPane();
 		gridPane.setViewportView(gridTable);
+		
+		
 	}
 	
 	private void setupPanel()
@@ -73,6 +75,7 @@ public class GridPanel extends JPanel
 		this.add(submitButton);
 		this.add(eraseButton);
 		this.add(gridPane);
+		
 	}
 	
 	private void setupLayout()
@@ -113,7 +116,7 @@ public class GridPanel extends JPanel
 				if (row < 5 && col < 5)
 				{
 					baseController.getGrid()[row][col].setName(inputField.getText());
-					
+					repaint();
 				}
 				else
 				{
@@ -132,6 +135,7 @@ public class GridPanel extends JPanel
 					if (row < 5 && col < 5)
 					{
 						baseController.getGrid()[row][col].setName("");
+						repaint();
 					}
 					else
 					{

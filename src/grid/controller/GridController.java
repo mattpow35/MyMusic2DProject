@@ -107,4 +107,26 @@ public class GridController
 	{
 		return appFrame;
 	}
+	
+	public void updateMusic(String row, String col, String value)
+	{
+		if (isValid(row) && isValid(col) && isValid(value))
+		{
+			
+		}
+	}
+	
+	private boolean isValid(String temp)
+	{
+		try 
+		{
+			Integer.parseInt(temp);
+			return true;
+		}
+		catch
+		{
+			NumberFormatE
+			return false;
+		}
+	}
 }
