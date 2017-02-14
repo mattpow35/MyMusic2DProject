@@ -111,17 +111,9 @@ public class GridPanel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				int row = Integer.parseInt(rowField.getText());
-				int col = Integer.parseInt(columnField.getText());
-				if (row < 5 && col < 5)
-				{
-					baseController.getGrid()[row][col].setName(inputField.getText());
+					baseController.updateMusic(rowField.getText(), columnField.getText(), inputField.getText());
 					repaint();
-				}
-				else
-				{
-					JOptionPane.showMessageDialog(baseController.getAppFrame(), "Type in a valid location for a song. Rememeer row and column start at 0 not 1 :)");
-				}
+				
 			}
 		});
 		
@@ -130,17 +122,8 @@ public class GridPanel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-					int row = Integer.parseInt(rowField.getText());
-					int col = Integer.parseInt(columnField.getText());
-					if (row < 5 && col < 5)
-					{
-						baseController.getGrid()[row][col].setName("");
-						repaint();
-					}
-					else
-					{
-						JOptionPane.showMessageDialog(baseController.getAppFrame(), "Type in a valid location for a song to be cleared. Rows and columns start at 0 not 1 :)");
-					}
+				baseController.updateMusic(rowField.getText(), columnField.getText(), "");
+				repaint();
 		     	
 		
 			}

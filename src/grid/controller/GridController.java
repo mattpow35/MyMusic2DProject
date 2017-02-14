@@ -108,11 +108,11 @@ public class GridController
 		return appFrame;
 	}
 	
-	public void updateMusic(String row, String col, String value)
+	public void updateMusic(String row, String col, String input)
 	{
-		if (isValid(row) && isValid(col) && isValid(value))
+		if (isValid(row) && isValid(col))
 		{
-			
+			grid[Integer.parseInt(row)][Integer.parseInt(col)].setName(input);
 		}
 	}
 	
@@ -123,9 +123,9 @@ public class GridController
 			Integer.parseInt(temp);
 			return true;
 		}
-		catch
+		catch(NumberFormatException error)
 		{
-			NumberFormatE
+			
 			return false;
 		}
 	}
